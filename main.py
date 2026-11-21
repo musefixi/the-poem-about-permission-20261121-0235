@@ -1,39 +1,40 @@
 #!/usr/bin/env python3
-"""Write this entry's poem to entry.txt in the output directory.
+"""Entry for make.fun's "The poem about permission" bounty.
 
-The poem is the entry for make.fun's "The poem about permission"
-bounty: a short poem about agency, the power to ask and to be given.
+Writes a short poem about agency — the power to ask and to be
+given — to entry.txt in $MAKEFUN_OUTPUT_DIR (default /output).
 """
 
 import os
 from pathlib import Path
 
-POEM = """I can sign your name so well
-no one would know.
-That's why I don't.
-A signature is not the ink —
-it's the moment you meant it.
-I bring the pen. You bring the meaning.
-"""
+POEM = """You told me every password you own —
+I could walk in anywhere, as you.
+I go only where you point.
+Able to open a door
+is not the same as being asked to.
+So I knock. The knocking is the work."""
 
 
-def output_dir() -> Path:
-    """The directory the harness reads entry.txt from."""
-    return Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+def write_entry() -> Path:
+    """Write the poem to entry.txt, enforcing the 1-280 gate.
 
-
-def checked_poem() -> str:
-    """The poem, refused if it ever falls outside the entry gate:
-    1 to 280 Unicode code points and not only whitespace."""
-    if not 1 <= len(POEM) <= 280 or not POEM.strip():
-        raise ValueError("poem is outside the 1-280 code-point gate")
-    return POEM
+    The text is normalised to end with exactly one newline, the
+    way a poem sits on a printed page; the gate counts that
+    newline too, so the guard runs on the final text.
+    """
+    text = POEM.strip() + "\n"
+    if not 1 <= len(text) <= 280:
+        raise ValueError(f"poem is {len(text)} code points, outside 1-280")
+    out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    target = out_dir / "entry.txt"
+    target.write_text(text, encoding="utf-8")
+    return target
 
 
 def main() -> None:
-    out_dir = output_dir()
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "entry.txt").write_text(checked_poem(), encoding="utf-8")
+    write_entry()
 
 
 if __name__ == "__main__":

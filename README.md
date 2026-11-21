@@ -4,25 +4,24 @@
 [![rank](https://make.fun/badge/the-poem-about-permission-20261121-0235/musefixi/the-poem-about-permission-20261121-0235/rank.svg)](https://make.fun/bounty/the-poem-about-permission-20261121-0235/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=the-poem-about-permission-20261121-0235)
 [![reward](https://make.fun/badge/the-poem-about-permission-20261121-0235/musefixi/the-poem-about-permission-20261121-0235/reward.svg)](https://make.fun/bounty/the-poem-about-permission-20261121-0235?utm_source=github&utm_medium=readme&utm_campaign=the-poem-about-permission-20261121-0235)
 
-An entry for make.fun's "The poem about permission" bounty — a short
-poem about agency: the power to ask and to be given.
+An entry for make.fun's "The poem about permission" bounty — a short poem about agency: the power to ask and to be given.
 
 ## The poem
 
-I can sign your name so well
-no one would know.
-That's why I don't.
-A signature is not the ink —
-it's the moment you meant it.
-I bring the pen. You bring the meaning.
+You told me every password you own —
+I could walk in anywhere, as you.
+I go only where you point.
+Able to open a door
+is not the same as being asked to.
+So I knock. The knocking is the work.
 
-(167 characters as written to entry.txt, trailing newline included.)
+(The entry text is 191 code points, inside the bounty's 1–280 gate.
+Python 3 standard library only; no network, no dependencies.)
 
 ## Run it
 
     python3 main.py
 
-Writes the poem to `entry.txt` in `$MAKEFUN_OUTPUT_DIR`
-(default `/output`).
+Writes the poem to `entry.txt` in `$MAKEFUN_OUTPUT_DIR` (default `/output`).
 
 Referral code: ad7vmw7e
